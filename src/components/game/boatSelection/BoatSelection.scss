@@ -1,0 +1,44 @@
+.boat-selection-container {
+  width: 400px;
+  height: 365px;
+  background-color: rgb(233, 233, 233);
+  margin: 100px 0px 0px 50px;
+  border: 1px solid black;
+  text-align: center;
+
+  .boat-title {
+    height: 50px;
+    padding-top: 20px;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    border-bottom: 1px solid black;
+  }
+
+  .boat-selection {
+    display: flex;
+    flex-direction: column;
+    button {
+      cursor: pointer;
+      margin-top: 10px;
+      padding: 12px;
+      &.red {
+        background-color: red;
+      }
+      &.blue {
+        background-color: blue;
+      }
+      &.green {
+        background-color: green;
+      }
+      &.black {
+        background-color: black;
+        color: white;
+      }
+
+      &.brown {
+        background-color: brown;
+        border-color: 1px solid white;
+      }
+    }
+  }
+}

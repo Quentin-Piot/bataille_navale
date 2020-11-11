@@ -1,0 +1,10 @@
+.Bataille {
+  width: calc(100% - 24px);
+  margin: 12px;
+
+  .Game {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}

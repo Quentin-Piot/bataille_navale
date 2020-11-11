@@ -11,4 +11,4 @@ This project was realized to take the React tool in hand in order to develop new
 
 ### Librairies
 
-To be completed
+**i18next** npm install --save i18next-browser-languagedetector

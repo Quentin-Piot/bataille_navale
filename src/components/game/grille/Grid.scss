@@ -1,0 +1,40 @@
+.grid-container {
+  margin: 100px auto auto auto;
+  width: 500px;
+  height: 500px;
+  background-color: lightgray;
+
+  display: flex;
+  flex-wrap: wrap;
+  .case {
+    flex: 1 1 calc(480px / 10);
+    text-align: center;
+    font-size: 0.6em;
+    height: 48px;
+    color: grey;
+    border: 1px solid rgb(128, 128, 128);
+    cursor: pointer;
+
+    &.red {
+      background-color: red;
+    }
+    &.blue {
+      background-color: blue;
+    }
+    &.green {
+      background-color: green;
+    }
+    &.black {
+      background-color: black;
+    }
+
+    &.brown {
+      background-color: brown;
+    }
+
+    &.highlight {
+      border: 1px solid black;
+      background-color: rgb(224, 223, 223);
+    }
+  }
+}
