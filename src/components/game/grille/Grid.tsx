@@ -38,20 +38,11 @@ class Grid extends React.Component<GridProps, IState> {
     let canHorizontal = true;
     let canVertical = true;
 
-    if (
-      this.props.selectedShip &&
-      this.props.selectedShip?.remainingPlacement > 1
-    ) {
+    if (this.props.selectedShip && this.props.selectedShip?.remainingPlacement > 1) {
       if (this.props.selectedShip.positions.length >= 1) {
-        if (
-          this.props.selectedShip.positions[0].letter ===
-          cases[index].position.letter
-        ) {
+        if (this.props.selectedShip.positions[0].letter === cases[index].position.letter) {
           canVertical = false;
-        } else if (
-          this.props.selectedShip.positions[0].number ===
-          cases[index].position.number
-        ) {
+        } else if (this.props.selectedShip.positions[0].number === cases[index].position.number) {
           canHorizontal = false;
         }
       } else {
@@ -63,11 +54,7 @@ class Grid extends React.Component<GridProps, IState> {
     return { canVertical, canHorizontal };
   }
 
-  private checkIfEnoughSpace(
-    position: string,
-    index: number,
-    cases: Array<Case>
-  ): boolean {
+  private checkIfEnoughSpace(position: string, index: number, cases: Array<Case>): boolean {
     if (position === "horizontal") {
       let indexHorizontal = 0;
       let horizontalRemaining = 0;
@@ -77,8 +64,7 @@ class Grid extends React.Component<GridProps, IState> {
         indexHorizontal++;
         if (
           cases[index - indexHorizontal] &&
-          cases[index - indexHorizontal].position.letter ===
-            cases[index].position.letter &&
+          cases[index - indexHorizontal].position.letter === cases[index].position.letter &&
           cases[index - indexHorizontal].shipIndex.length < 1
         ) {
           horizontalRemaining++;
@@ -88,8 +74,7 @@ class Grid extends React.Component<GridProps, IState> {
 
         if (
           cases[index + indexHorizontal] &&
-          cases[index + indexHorizontal].position.letter ===
-            cases[index].position.letter &&
+          cases[index + indexHorizontal].position.letter === cases[index].position.letter &&
           cases[index + indexHorizontal].shipIndex.length < 1
         ) {
           horizontalRemaining++;
@@ -109,8 +94,7 @@ class Grid extends React.Component<GridProps, IState> {
         indexVertical += 10;
         if (
           cases[index - indexVertical] &&
-          cases[index - indexVertical].position.number ===
-            cases[index].position.number &&
+          cases[index - indexVertical].position.number === cases[index].position.number &&
           cases[index - indexVertical].shipIndex.length < 1
         ) {
           verticalRemaining++;
@@ -120,8 +104,7 @@ class Grid extends React.Component<GridProps, IState> {
 
         if (
           cases[index + indexVertical] &&
-          cases[index + indexVertical].position.number ===
-            cases[index].position.number &&
+          cases[index + indexVertical].position.number === cases[index].position.number &&
           cases[index + indexVertical].shipIndex.length < 1
         ) {
           verticalRemaining++;
@@ -171,9 +154,7 @@ class Grid extends React.Component<GridProps, IState> {
         {cases.map((value, index) => {
           return (
             <div
-              className={`case ${
-                value.highlighted ? "highlight" : value.color
-              }`}
+              className={`case ${value.highlighted ? "highlight" : value.color}`}
               key={index}
               onClick={(e) => this.handleClick(index)}
             >
@@ -186,19 +167,11 @@ class Grid extends React.Component<GridProps, IState> {
   }
 
   private highlightCases(index: number, cases: Array<Case>) {
-    if (
-      this.props.selectedShip &&
-      this.props.selectedShip?.remainingPlacement > 1
-    ) {
-      const { canHorizontal, canVertical } = this.getShipDirection(
-        index,
-        cases
-      );
+    if (this.props.selectedShip && this.props.selectedShip?.remainingPlacement > 1) {
+      const { canHorizontal, canVertical } = this.getShipDirection(index, cases);
 
       if (canHorizontal) {
-        const shipsPosition = this.props.selectedShip?.positions.sort((a, b) =>
-          a.number.localeCompare(b.number)
-        );
+        const shipsPosition = this.props.selectedShip?.positions.sort((a, b) => a.number.localeCompare(b.number));
         //left
         if (
           cases[index - 1] &&
@@ -207,25 +180,20 @@ class Grid extends React.Component<GridProps, IState> {
         ) {
           cases[index - 1].highlighted = true;
         }
-        const mostLeftCase: number = cases.findIndex(
-          (value) => value.position === shipsPosition[0]
-        );
+        const mostLeftCase: number = cases.findIndex((value) => value.position === shipsPosition[0]);
 
         if (
           mostLeftCase >= 0 &&
           cases[mostLeftCase - 1] &&
           cases[mostLeftCase - 1].shipIndex.length < 1 &&
-          cases[mostLeftCase - 1].position.letter ===
-            cases[mostLeftCase].position.letter
+          cases[mostLeftCase - 1].position.letter === cases[mostLeftCase].position.letter
         ) {
           cases[mostLeftCase - 1].highlighted = true;
         }
 
         //right
         const mostRightCase: number = cases.findIndex(
-          (value) =>
-            value.position ===
-            shipsPosition[this.props.selectedShip?.positions.length!! - 1]
+          (value) => value.position === shipsPosition[this.props.selectedShip?.positions.length!! - 1]
         );
         if (
           cases[index + 1] &&
@@ -238,17 +206,14 @@ class Grid extends React.Component<GridProps, IState> {
           mostRightCase >= 0 &&
           cases[mostRightCase + 1] &&
           cases[mostRightCase + 1].shipIndex.length < 1 &&
-          cases[mostRightCase + 1].position.letter ===
-            cases[mostRightCase].position.letter
+          cases[mostRightCase + 1].position.letter === cases[mostRightCase].position.letter
         ) {
           cases[mostRightCase + 1].highlighted = true;
         }
       }
 
       if (canVertical) {
-        const shipsPositionV = this.props.selectedShip?.positions.sort((a, b) =>
-          a.letter.localeCompare(b.letter)
-        );
+        const shipsPositionV = this.props.selectedShip?.positions.sort((a, b) => a.letter.localeCompare(b.letter));
         //up
         if (
           cases[index - 10] &&
@@ -257,24 +222,19 @@ class Grid extends React.Component<GridProps, IState> {
         ) {
           cases[index - 10].highlighted = true;
         }
-        const mostUpCase: number = cases.findIndex(
-          (value) => value.position === shipsPositionV[0]
-        );
+        const mostUpCase: number = cases.findIndex((value) => value.position === shipsPositionV[0]);
 
         if (
           mostUpCase >= 0 &&
           cases[mostUpCase - 10] &&
           cases[mostUpCase - 10].shipIndex.length < 1 &&
-          cases[mostUpCase - 10].position.number ===
-            cases[mostUpCase].position.number
+          cases[mostUpCase - 10].position.number === cases[mostUpCase].position.number
         ) {
           console.log(cases[mostUpCase - 10]);
           cases[mostUpCase - 10].highlighted = true;
         }
         const mostDownCase: number = cases.findIndex(
-          (value) =>
-            value.position ===
-            shipsPositionV[this.props.selectedShip?.positions.length!! - 1]
+          (value) => value.position === shipsPositionV[this.props.selectedShip?.positions.length!! - 1]
         );
         if (
           cases[index + 10] &&
@@ -287,8 +247,7 @@ class Grid extends React.Component<GridProps, IState> {
           mostDownCase >= 0 &&
           cases[mostDownCase + 10] &&
           cases[mostDownCase + 10].shipIndex.length < 1 &&
-          cases[mostDownCase + 10].position.number ===
-            cases[mostDownCase].position.number
+          cases[mostDownCase + 10].position.number === cases[mostDownCase].position.number
         ) {
           cases[mostDownCase + 10].highlighted = true;
         }

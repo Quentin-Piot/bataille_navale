@@ -5,7 +5,8 @@ import Game from "./game/Game";
 function App() {
   return (
     <div className="Battleship">
-      <div className="animation-wrapper">{""}
+      <div className="animation-wrapper">
+        {""}
         <div className="particle particle-1"></div>
         <div className="particle particle-2"></div>
         <div className="particle particle-3"></div>

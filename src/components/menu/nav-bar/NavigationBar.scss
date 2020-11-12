@@ -1,31 +1,31 @@
 .navigation-bar {
-    height: 10%;
-    background-color: rgb(36, 35, 35);
-    display: flex;
-    flex-wrap: wrap;
+  height: 10%;
+  background-color: rgb(36, 35, 35);
+  display: flex;
+  flex-wrap: wrap;
 
-    .app-name {
-       font-family: UrbanJungle;
-        width: calc(50% - 20px);
-        padding-left: 20px;
-        font-size: 2.5em;
-        line-height: 2em;
-        color: white;
+  .app-name {
+    font-family: UrbanJungle;
+    width: calc(50% - 20px);
+    padding-left: 20px;
+    font-size: 2.5em;
+    line-height: 2em;
+    color: white;
+  }
+
+  .langages {
+    width: calc(50% - 20px);
+    padding-right: 20px;
+    color: white;
+    text-align: right;
+
+    button {
+      margin-right: 15px;
     }
+  }
 
-    .langages {
-        width: calc(50% - 20px);
-        padding-right: 20px;
-        color: white;
-        text-align: right;
-
-        button {
-            margin-right: 15px;
-        }
-    }
-
-    .vertical-align {
-        margin-top: auto;
-        margin-bottom: auto;
-    }
+  .vertical-align {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 }

@@ -16,8 +16,12 @@ class BoatSelection extends React.Component<BoatSelectionProps, {}> {
   }
 
   private handleClick(index: number) {
-    if(this.props.selectedShip && (this.props.selectedShip.remainingPlacement < 1 || (this.props.selectedShip?.remainingPlacement === this.props.selectedShip?.totalPlacement)))
-    this.props.shipSelection(index);
+    if (
+      this.props.selectedShip &&
+      (this.props.selectedShip.remainingPlacement < 1 ||
+        this.props.selectedShip?.remainingPlacement === this.props.selectedShip?.totalPlacement)
+    )
+      this.props.shipSelection(index);
   }
 
   render() {
@@ -30,12 +34,7 @@ class BoatSelection extends React.Component<BoatSelectionProps, {}> {
           {shipsList.map((ship: Ship, index) => {
             return (
               <button
-                className={
-                  selectedShip?.index === ship.index &&
-                  ship.remainingPlacement > 0
-                    ? selectedShip.color
-                    : "default"
-                }
+                className={selectedShip?.index === ship.index && ship.remainingPlacement > 0 ? selectedShip.color : "default"}
                 key={ship.label}
                 onClick={() => this.handleClick(index)}
                 disabled={ship.remainingPlacement <= 0}
@@ -45,8 +44,8 @@ class BoatSelection extends React.Component<BoatSelectionProps, {}> {
             );
           })}
         </div>
-        <br/>
-        <span className = "remaining">Cases remaining : {selectedShip?.remainingPlacement}</span>
+        <br />
+        <span className="remaining">Cases remaining : {selectedShip?.remainingPlacement}</span>
       </div>
     );
   }

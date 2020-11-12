@@ -1,11 +1,9 @@
-
-
 .Bataille {
   width: calc(100% - 24px);
   margin: 12px;
 
   .phase {
-    color:white;
+    color: white;
     text-align: center;
     height: 30px;
     width: 300px;
@@ -16,5 +14,4 @@
     display: flex;
     flex-wrap: wrap;
   }
-
 }
