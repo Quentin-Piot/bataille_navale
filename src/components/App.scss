@@ -1,9 +1,4 @@
 
-@font-face {
-    font-family: love;
-    src: url("./assets/fonts/Evogria.otf");
-  }
-
   /* Config */
 $color-bg: #1e1e1e;
 $color-particle: #c3d7db;
@@ -31,7 +26,7 @@ $time-4: 200s;
 
 
 .Battleship {
-    font-family: love;
+    font-family: Evogria;
     height: 100vh;
     width: 100vw;
     background: url("./assets/img/background.jpg");
@@ -41,7 +36,7 @@ $time-4: 200s;
 }
 
 button {
-    font-family: love;
+    font-family: Evogria;
 
 }
 
