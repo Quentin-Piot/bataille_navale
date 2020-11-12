@@ -1,7 +1,16 @@
+
 .Bataille {
   width: calc(100% - 24px);
   margin: 12px;
 
+  .phase {
+    color:white;
+    text-align: center;
+    height: 30px;
+    width: 300px;
+    border: 1px solid white;
+    line-height: 25px;
+  }
   .Game {
     display: flex;
     flex-wrap: wrap;

@@ -46,7 +46,7 @@ class BoatSelection extends React.Component<BoatSelectionProps, {}> {
           })}
         </div>
         <br/>
-        <span>Cases remaining : {selectedShip?.remainingPlacement}</span>
+        <span className = "remaining">Cases remaining : {selectedShip?.remainingPlacement}</span>
       </div>
     );
   }
