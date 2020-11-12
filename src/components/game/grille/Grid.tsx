@@ -54,12 +54,88 @@ class Grid extends React.Component<GridProps, IState> {
         ) {
           canHorizontal = false;
         }
+      } else {
+        canVertical = this.checkIfEnoughSpace("vertical", index, cases);
+        canHorizontal = this.checkIfEnoughSpace("horizontal", index, cases);
       }
     }
 
     return { canVertical, canHorizontal };
   }
 
+  private checkIfEnoughSpace(
+    position: string,
+    index: number,
+    cases: Array<Case>
+  ): boolean {
+    if (position === "horizontal") {
+      let indexHorizontal = 0;
+      let horizontalRemaining = 0;
+      let stopSearchingLeft = false;
+      let stopSearchingRight = false;
+      while (!stopSearchingLeft || !stopSearchingRight) {
+        indexHorizontal++;
+        if (
+          cases[index - indexHorizontal] &&
+          cases[index - indexHorizontal].position.letter ===
+            cases[index].position.letter &&
+          cases[index - indexHorizontal].shipIndex.length < 1
+        ) {
+          horizontalRemaining++;
+        } else {
+          stopSearchingLeft = true;
+        }
+
+        if (
+          cases[index + indexHorizontal] &&
+          cases[index + indexHorizontal].position.letter ===
+            cases[index].position.letter &&
+          cases[index + indexHorizontal].shipIndex.length < 1
+        ) {
+          horizontalRemaining++;
+        } else {
+          stopSearchingRight = true;
+        }
+      }
+      if (horizontalRemaining < this.props.selectedShip!!.remainingPlacement) {
+        return false;
+      }
+    } else {
+      let indexVertical = 0;
+      let verticalRemaining = 0;
+      let stopSearchingUp = false;
+      let stopSearchingDown = false;
+      while (!stopSearchingUp || !stopSearchingDown) {
+        indexVertical += 10;
+        if (
+          cases[index - indexVertical] &&
+          cases[index - indexVertical].position.number ===
+            cases[index].position.number &&
+          cases[index - indexVertical].shipIndex.length < 1
+        ) {
+          verticalRemaining++;
+        } else {
+          stopSearchingUp = true;
+        }
+
+        if (
+          cases[index + indexVertical] &&
+          cases[index + indexVertical].position.number ===
+            cases[index].position.number &&
+          cases[index + indexVertical].shipIndex.length < 1
+        ) {
+          verticalRemaining++;
+        } else {
+          stopSearchingDown = true;
+        }
+      }
+      if (verticalRemaining < this.props.selectedShip!!.remainingPlacement) {
+        return false;
+      }
+    }
+
+    return true;
+  }
   private generateGrid() {
     const cases: Array<Case> = [];
     const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
